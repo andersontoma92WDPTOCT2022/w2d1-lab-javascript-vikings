@@ -47,8 +47,16 @@ class Saxon extends Soldier {
 // War
 class War {
   // propierties
+  // como não vai instanciar, não precisa de this??
+  constructor() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+  }
+  /*  ou funciona sem um constructor: <-----------
   vikingArmy = [];
   saxonArmy = [];
+ */
+
   // methods
   addViking(newViking) {
     this.vikingArmy.push(newViking);
