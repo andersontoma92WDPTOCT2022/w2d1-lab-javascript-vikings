@@ -46,7 +46,7 @@ class Saxon extends Soldier {
 
 // War
 class War {
-  // proprieties
+  // propierties
   vikingArmy = [];
   saxonArmy = [];
   // methods
@@ -57,21 +57,44 @@ class War {
     this.saxonArmy.push(newSaxon);
   }
   vikingAttack() {
-    let indexRandomSaxon = Math.floor(Math.random()) * this.vikingArmy.length;
-    let indexRandomViking = Math.floor(Math.random()) * this.saxonArmy.length;
+    let indexRandomSaxon = Math.floor(Math.random()) * this.saxonArmy.length;
+    let indexRandomViking = Math.floor(Math.random()) * this.vikingArmy.length;
 
     let damage = this.vikingArmy[indexRandomViking].strength;
     let resultado = this.saxonArmy[indexRandomSaxon].receiveDamage(damage);
-    console.log(resultado, '<---------', damage);
+    console.log(resultado, '<  result of viking attack', damage);
     //removing saxon if dead
     if (resultado === `A Saxon has died in combat`) {
       this.saxonArmy.splice(indexRandomSaxon, 1);
     }
-
     //
-
     return resultado;
   }
-  saxonAttack() {}
+
+  //  saxon Attack
+
+  saxonAttack() {
+    let indexRandomSaxon = Math.floor(Math.random()) * this.saxonArmy.length;
+    let indexRandomViking = Math.floor(Math.random()) * this.vikingArmy.length;
+
+    let damage = this.saxonArmy[indexRandomSaxon].strength;
+    let resultado = this.vikingArmy[indexRandomViking].receiveDamage(damage);
+    console.log(
+      resultado,
+      '<--',
+      'result of saxon attack// damage:/health',
+      damage,
+      this.vikingArmy[indexRandomViking].health
+    );
+    //removing saxon if dead
+    if (resultado.includes('died')) {
+      this.vikingArmy.splice(indexRandomViking, 1);
+    }
+    console.log(this.vikingArmy);
+    //
+    return resultado;
+  }
+
+  //
   showStatus() {}
 }
